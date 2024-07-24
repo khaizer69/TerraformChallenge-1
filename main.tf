@@ -25,3 +25,43 @@ resource "aws_vpc" "main" {
     Name = "junjie-tf-vpc"
   }
 }
+
+# Define Public Subnet 1 in AZ1
+resource "aws_subnet" "public_subnet_az1" {
+  vpc_id     = aws_vpc.main.id
+  cidr_block = "10.0.1.0/24"
+  availability_zone = "us-east-1a"
+  tags = {
+    Name = "junjie-tf-public-subnet-az1"
+  }
+}
+
+# Define Public Subnet 2 in AZ2
+resource "aws_subnet" "public_subnet_az2" {
+  vpc_id     = aws_vpc.main.id
+  cidr_block = "10.0.2.0/24"
+  availability_zone = "us-east-1b"
+  tags = {
+    Name = "junjie-tf-public-subnet-az2"
+  }
+}
+
+# Define Private Subnet 1 in AZ1
+resource "aws_subnet" "private_subnet_az1" {
+  vpc_id     = aws_vpc.main.id
+  cidr_block = "10.0.3.0/24"
+  availability_zone = "us-east-1a"
+  tags = {
+    Name = "junjie-tf-private-subnet-az1"
+  }
+}
+
+# Define Private Subnet 2 in AZ2
+resource "aws_subnet" "private_subnet_az2" {
+  vpc_id     = aws_vpc.main.id
+  cidr_block = "10.0.4.0/24"
+  availability_zone = "us-east-1b"
+  tags = {
+    Name = "junjie-tf-private-subnet-az2"
+  }
+}
