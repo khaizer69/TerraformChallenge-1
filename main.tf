@@ -74,3 +74,14 @@ resource "aws_internet_gateway" "gw" {
     Name = "junjie-tf-igw"
   }
 }
+
+# Define VPC Endpoint for S3
+resource "aws_vpc_endpoint" "s3" {
+  vpc_id       = aws_vpc.main.id
+  service_name = "com.amazonaws.us-east-1.s3"
+
+  tags = {
+    Environment = "junjie-tf-vpce-s3"
+    Name = "junjie-tf-vpc-vpce-3"
+  }
+}
