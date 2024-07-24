@@ -65,3 +65,12 @@ resource "aws_subnet" "private_subnet_az2" {
     Name = "junjie-tf-private-subnet-az2"
   }
 }
+
+# Define internet gateway 
+resource "aws_internet_gateway" "gw" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "junjie-tf-igw"
+  }
+}
