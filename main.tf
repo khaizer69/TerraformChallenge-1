@@ -85,3 +85,28 @@ resource "aws_vpc_endpoint" "s3" {
     Name = "junjie-tf-vpc-vpce-3"
   }
 }
+
+# Define a route table for public subnets
+resource "aws_route_table" "public" {
+  vpc_id = aws_vpc.main.id
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.igw.id
+  }
+  tags = {
+    Name = "junjie-tf-public-rtb"
+  }
+}
+
+# Associate the public subnet 1 with the public route table
+resource "aws_route_table_association" "public_subnet_az1_association" {
+  subnet_id      = aws_subnet.public_subnet_az1.id
+  route_table_id = aws_route_table.public.id
+}
+
+# Associate the public subnet 2 with the public route table
+resource "aws_route_table_association" "public_subnet_az2_association" {
+  subnet_id      = aws_subnet.public_subnet_az2.id
+  route_table_id = aws_route_table.public.id
+}
+
