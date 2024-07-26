@@ -110,6 +110,14 @@ resource "aws_route_table_association" "public_subnet_az2_association" {
   route_table_id = aws_route_table.public.id
 }
 
+# Define a route table for private subnets
+resource "aws_route_table" "private" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "junjie-tf-private-rtb"
+  }
+}
 
 # Associate the private subnet 1 with the private route table 1
 resource "aws_route_table_association" "private_subnet_az1_association" {
