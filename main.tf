@@ -111,7 +111,7 @@ resource "aws_route_table_association" "public_subnet_az2_association" {
 }
 
 # Define a route table for private subnet az1
-resource "aws_route_table_az1" "private" {
+resource "aws_route_table" "private" {
   vpc_id = aws_vpc.main.id
 
   tags = {
