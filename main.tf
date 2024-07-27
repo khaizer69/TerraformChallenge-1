@@ -119,24 +119,3 @@ resource "aws_route_table" "private" {
   }
 }
 
-# Associate the private subnet 1 with the private route table
-resource "aws_route_table_association" "private_subnet_az1_association" {
-  subnet_id      = aws_subnet.private_subnet_az1.id
-  route_table_id = aws_route_table.private.id
-}
-
-# Define a route table for private subnet az2
-resource "aws_route_table_az2" "private" {
-  vpc_id = aws_vpc.main.id
-
-  tags = {
-    Name = "khai-tf-private-rtb-az2"
-  }
-}
-
-
-# Associate the private subnet 2 with the private route table
-resource "aws_route_table_association" "private_subnet_az2_association" {
-  subnet_id      = aws_subnet.private_subnet_az2.id
-  route_table_id = aws_route_table.private.id
-}
