@@ -22,7 +22,7 @@ resource "aws_vpc" "main" {
   instance_tenancy = "default"
 
   tags = {
-    Name = "junjie-tf-vpc"
+    Name = "khai-tf-vpc"
   }
 }
 
@@ -32,7 +32,7 @@ resource "aws_subnet" "public_subnet_az1" {
   cidr_block = "10.0.1.0/24"
   availability_zone = "us-east-1a"
   tags = {
-    Name = "junjie-tf-public-subnet-az1"
+    Name = "khai-tf-public-subnet-az1"
   }
 }
 
@@ -42,7 +42,7 @@ resource "aws_subnet" "public_subnet_az2" {
   cidr_block = "10.0.2.0/24"
   availability_zone = "us-east-1b"
   tags = {
-    Name = "junjie-tf-public-subnet-az2"
+    Name = "khai-tf-public-subnet-az2"
   }
 }
 
@@ -52,7 +52,7 @@ resource "aws_subnet" "private_subnet_az1" {
   cidr_block = "10.0.3.0/24"
   availability_zone = "us-east-1a"
   tags = {
-    Name = "junjie-tf-private-subnet-az1"
+    Name = "khai-tf-private-subnet-az1"
   }
 }
 
@@ -62,7 +62,7 @@ resource "aws_subnet" "private_subnet_az2" {
   cidr_block = "10.0.4.0/24"
   availability_zone = "us-east-1b"
   tags = {
-    Name = "junjie-tf-private-subnet-az2"
+    Name = "khai-tf-private-subnet-az2"
   }
 }
 
@@ -71,7 +71,7 @@ resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.main.id
 
   tags = {
-    Name = "junjie-tf-igw"
+    Name = "khai-tf-igw"
   }
 }
 
@@ -81,8 +81,8 @@ resource "aws_vpc_endpoint" "s3" {
   service_name = "com.amazonaws.us-east-1.s3"
 
   tags = {
-    Environment = "junjie-tf-vpce-s3"
-    Name = "junjie-tf-vpc-vpce-3"
+    Environment = "khai-tf-vpce-s3"
+    Name = "khai-tf-vpc-vpce-3"
   }
 }
 
@@ -94,7 +94,7 @@ resource "aws_route_table" "public" {
     gateway_id = aws_internet_gateway.gw.id
   }
   tags = {
-    Name = "junjie-tf-public-rtb"
+    Name = "khai-tf-public-rtb"
   }
 }
 
@@ -115,7 +115,7 @@ resource "aws_route_table" "private" {
   vpc_id = aws_vpc.main.id
 
   tags = {
-    Name = "junjie-tf-private-rtb-az1"
+    Name = "khai-tf-private-rtb-az1"
   }
 }
 
@@ -130,7 +130,7 @@ resource "aws_route_table_az2" "private" {
   vpc_id = aws_vpc.main.id
 
   tags = {
-    Name = "junjie-tf-private-rtb-az2"
+    Name = "khai-tf-private-rtb-az2"
   }
 }
 
